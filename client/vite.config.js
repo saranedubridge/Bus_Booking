@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:3000/',
+      '/api': 'https://bus-booking-backend-5nwu.onrender.com',
     },
   },
 })
