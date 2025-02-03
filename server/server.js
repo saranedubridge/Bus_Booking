@@ -7,10 +7,10 @@ app.use(express.json());
 
 const cors = require("cors");
 
-// app.use(cors({
-//     origin: "https://saranbus.netlify.app", // Adjust based on your frontend URL
-//     credentials: true,
-//   }));
+app.use(cors({
+    origin: "https://saranbus.netlify.app", // Adjust based on your frontend URL
+    credentials: true,
+  }));
 
 const usersRoute = require("./routes/usersRoute");
 const busesRoute = require("./routes/busesRoute");
