@@ -8,7 +8,7 @@ app.use(express.json());
 const cors = require("cors");
 
 app.use(cors({
-    origin: "http://localhost:5173/", // Adjust based on your frontend URL
+    origin: "https://bus-booking-frontend-gu0x.onrender.com", // Adjust based on your frontend URL
     credentials: true,
   }));
 
