@@ -12,6 +12,9 @@ app.use(cors({
     credentials: true,
   }));
 
+  app.options('*', cors());
+
+
 const usersRoute = require("./routes/usersRoute");
 const busesRoute = require("./routes/busesRoute");
 const bookingsRoute = require("./routes/bookingsRoute");
