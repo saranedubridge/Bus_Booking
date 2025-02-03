@@ -5,14 +5,14 @@ const dbConfig = require("./config/dbConfig");
 const port = process.env.PORT || 5000;
 app.use(express.json());
 
-const cors = require("cors");
+// const cors = require("cors");
 
-app.use(cors({
-    origin: "https://saranbus.netlify.app", // Adjust based on your frontend URL
-    credentials: true,
-  }));
+// app.use(cors({
+//     origin: "https://saranbus.netlify.app", // Adjust based on your frontend URL
+//     credentials: true,
+//   }));
 
-  app.options('*', cors());
+//   app.options('*', cors());
 
 
 const usersRoute = require("./routes/usersRoute");
