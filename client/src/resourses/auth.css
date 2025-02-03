@@ -1,0 +1,15 @@
+.auth{
+    background-color: var(--secondary);
+}
+
+/* Admin Login Credentials Styling */
+.admin-login-info {
+    background-color: #f8f9fa; /* Light grey background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding for spacing */
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Centered text */
+  }
+  
