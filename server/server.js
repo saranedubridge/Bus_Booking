@@ -12,6 +12,9 @@ app.use(cors({
     credentials: true,
   }));
 
+  // Handle CORS preflight requests
+app.options('*', cors());
+
 const usersRoute = require("./routes/usersRoute");
 const busesRoute = require("./routes/busesRoute");
 const bookingsRoute = require("./routes/bookingsRoute");
