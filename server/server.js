@@ -8,7 +8,7 @@ app.use(express.json());
 const cors = require("cors");
 
 app.use(cors({
-    origin: "https://busbookingfrontend.netlify.app/", // Adjust based on your frontend URL
+    origin: "https://saranbus.netlify.app", // Adjust based on your frontend URL
     credentials: true,
   }));
 
