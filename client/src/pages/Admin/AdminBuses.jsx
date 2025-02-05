@@ -1,4 +1,3 @@
-
 import { message, Table } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -17,7 +16,10 @@ function AdminBuses() {
   const getBuses = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/buses/get-all-buses", {});
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`buses/get-all-buses",
+        {}
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         console.log("Fetched Buses: ", response.data.data); // Log the data here
@@ -34,9 +36,12 @@ function AdminBuses() {
   const deleteBus = async (id) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/buses/delete-bus", {
-        _id: id,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`buses/delete-bus",
+        {
+          _id: id,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);

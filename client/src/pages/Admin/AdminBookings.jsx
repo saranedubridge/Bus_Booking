@@ -18,7 +18,7 @@ function Bookings() {
     try {
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-        "/api/bookings/get-all-bookings",
+        "`${import.meta.env.BACKEND_URL}/api/`bookings/get-all-bookings",
         {}
       );
       dispatch(HideLoading());

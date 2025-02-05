@@ -18,9 +18,12 @@ function Profile() {
   const getBookings = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/get-bookings-by-user-id", {
-        userId: user._id,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`bookings/get-bookings-by-user-id",
+        {
+          userId: user._id,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         setBookings(response.data.data);
@@ -36,10 +39,13 @@ function Profile() {
   const updateProfile = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/users/update-profile", {
-        ...values,
-        userId: user._id,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`users/update-profile",
+        {
+          ...values,
+          userId: user._id,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success("Profile updated successfully!");
@@ -64,13 +70,19 @@ function Profile() {
             <Form.Item label="Email" name="email" initialValue={user.email}>
               <Input />
             </Form.Item>
-            <Button type="primary" htmlType="submit">Save</Button>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
             <Button onClick={() => setEditMode(false)}>Cancel</Button>
           </Form>
         ) : (
           <div>
-            <p><strong>Name:</strong> {user.name}</p>
-            <p><strong>Email:</strong> {user.email}</p>
+            <p>
+              <strong>Name:</strong> {user.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
             <Button onClick={() => setEditMode(true)}>Edit Profile</Button>
           </div>
         )}
@@ -85,11 +97,23 @@ function Profile() {
                 title={`Booking ID: ${booking._id}`}
                 description={
                   <>
-                    <p><strong>Bus Name:</strong> {booking.bus.name}</p>
-                    <p><strong>From:</strong> {booking.bus.from} - <strong>To:</strong> {booking.bus.to}</p>
-                    <p><strong>Date:</strong> {booking.journeyDate}</p>
-                    <p><strong>Seats:</strong> {booking.seats.join(", ")}</p>
-                    <p><strong>Fare:</strong> ₹ {booking.fare * booking.seats.length}</p>
+                    <p>
+                      <strong>Bus Name:</strong> {booking.bus.name}
+                    </p>
+                    <p>
+                      <strong>From:</strong> {booking.bus.from} -{" "}
+                      <strong>To:</strong> {booking.bus.to}
+                    </p>
+                    <p>
+                      <strong>Date:</strong> {booking.journeyDate}
+                    </p>
+                    <p>
+                      <strong>Seats:</strong> {booking.seats.join(", ")}
+                    </p>
+                    <p>
+                      <strong>Fare:</strong> ₹{" "}
+                      {booking.fare * booking.seats.length}
+                    </p>
                   </>
                 }
               />
@@ -102,5 +126,3 @@ function Profile() {
 }
 
 export default Profile;
-
-

@@ -16,9 +16,12 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/buses/get-bus-by-id", {
-        _id: params.id,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`buses/get-bus-by-id",
+        {
+          _id: params.id,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         setBus(response.data.data);
@@ -34,11 +37,14 @@ function BookNow() {
   const bookNow = async (transactionId) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/book-seat", {
-        bus: bus._id,
-        seats: selectedSeats,
-        transactionId,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`bookings/book-seat",
+        {
+          bus: bus._id,
+          seats: selectedSeats,
+          transactionId,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);
@@ -55,10 +61,13 @@ function BookNow() {
   const onToken = async (token) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/make-payment", {
-        token,
-        amount: selectedSeats.length * bus.fare * 100,
-      });
+      const response = await axiosInstance.post(
+        "`${import.meta.env.BACKEND_URL}/api/`bookings/make-payment",
+        {
+          token,
+          amount: selectedSeats.length * bus.fare * 100,
+        }
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);
@@ -86,21 +95,11 @@ function BookNow() {
             <hr />
 
             <div className="flex flex-col gap-2">
-              <p className="text-md">
-                Jourey Date : {bus.journeyDate}
-              </p>
-              <p className="text-md">
-                Fare : $ {bus.fare} /-
-              </p>
-              <p className="text-md">
-                Departure Time : {bus.departure}
-              </p>
-              <p className="text-md">
-                Arrival Time : {bus.arrival}
-              </p>
-              <p className="text-md">
-                Capacity : {bus.capacity}
-              </p>
+              <p className="text-md">Jourey Date : {bus.journeyDate}</p>
+              <p className="text-md">Fare : $ {bus.fare} /-</p>
+              <p className="text-md">Departure Time : {bus.departure}</p>
+              <p className="text-md">Arrival Time : {bus.arrival}</p>
+              <p className="text-md">Capacity : {bus.capacity}</p>
               <p className="text-md">
                 Seats Left : {bus.capacity - bus.seatsBooked.length}
               </p>
@@ -148,6 +147,3 @@ function BookNow() {
 }
 
 export default BookNow;
-
-
-

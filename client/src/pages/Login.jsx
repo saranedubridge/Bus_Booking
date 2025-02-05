@@ -18,7 +18,10 @@ function Login() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/users/login", values);
+      const response = await axios.post(
+        `${import.meta.env.BACKEND_URL}/api/users/login`,
+        values
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);

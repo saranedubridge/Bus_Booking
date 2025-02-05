@@ -20,12 +20,18 @@ function BusForm({
       dispatch(ShowLoading());
       let response = null;
       if (type === "add") {
-        response = await axiosInstance.post("/api/buses/add-bus", values);
+        response = await axiosInstance.post(
+          "`${import.meta.env.BACKEND_URL}/api/`buses/add-bus",
+          values
+        );
       } else {
-        response = await axiosInstance.post("/api/buses/update-bus", {
-          ...values,
-          _id: selectedBus._id,
-        });
+        response = await axiosInstance.post(
+          "`${import.meta.env.BACKEND_URL}/api/`buses/update-bus",
+          {
+            ...values,
+            _id: selectedBus._id,
+          }
+        );
       }
       if (response.data.success) {
         message.success(response.data.message);

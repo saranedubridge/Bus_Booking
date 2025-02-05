@@ -20,7 +20,7 @@
 //     try {
 //       dispatch(ShowLoading());
 //       const response = await axios.post(
-//         "/api/buses/get-all-buses",
+//         "`${import.meta.env.BACKEND_URL}/api/`buses/get-all-buses",
 //         tempFilters,
 //         {
 //           headers: {
@@ -139,7 +139,7 @@ function Home() {
     try {
       dispatch(ShowLoading());
       const response = await axios.post(
-        "/api/buses/get-all-buses",
+        "`${import.meta.env.BACKEND_URL}/api/`buses/get-all-buses",
         tempFilters,
         {
           headers: {
