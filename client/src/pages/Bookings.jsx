@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import PageTitle from "../components/PageTitle";
-import api, { axiosInstance } from "../helpers/axiosInstance";
+import { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { useReactToPrint } from "react-to-print";
 

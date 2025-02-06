@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Form, message, Modal, Row } from "antd";
-import api, { axiosInstance } from "../helpers/axiosInstance";
+import { axiosInstance } from "../helpers/axiosInstance";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
-import moment from "moment";
+
 
 function BusForm({
   showBusForm,
@@ -20,13 +20,13 @@ function BusForm({
       dispatch(ShowLoading());
       let response = null;
       if (type === "add") {
-        response = await api.post("/api/buses/add-bus", values);
+        response = await axiosInstance.post("/api/buses/add-bus", values);
         
        
       } else {
         
         
-        response = await api.post(
+        response = await axiosInstance.post(
          " /api/buses/update-bus",
           {
             ...values,

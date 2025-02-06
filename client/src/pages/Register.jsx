@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Form, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { ShowLoading, HideLoading } from "../redux/alertsSlice";
 import "../resourses/auth.css";
-import api from "../helpers/axiosInstance";
+import  { axiosInstance } from "../helpers/axiosInstance";
 
 function Register() {
   const [formValues, setFormValues] = useState({
@@ -20,7 +19,7 @@ function Register() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
        "/api/users/register",
         values
       );

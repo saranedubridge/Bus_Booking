@@ -1,9 +1,8 @@
 import { message, Table } from "antd";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import PageTitle from "../../components/PageTitle";
-import api, { axiosInstance } from "../../helpers/axiosInstance";
+import  { axiosInstance } from "../../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../../redux/alertsSlice";
 
 function AdminUsers() {
@@ -14,7 +13,7 @@ function AdminUsers() {
   const getUsers = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
         "/api/users/get-all-users",
         {}
       );

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import SeatSelection from "../components/SeatSelection";
-import api, { axiosInstance } from "../helpers/axiosInstance";
+import  { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import StripeCheckout from "react-stripe-checkout";
 
@@ -16,7 +16,7 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.api.post(
+      const response = await axiosInstance.post(
         "/api/buses/get-bus-by-id",
         {
           _id: params.id,
@@ -61,7 +61,7 @@ function BookNow() {
   const onToken = async (token) => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
         "/api/bookings/make-payment",
         {
           token,

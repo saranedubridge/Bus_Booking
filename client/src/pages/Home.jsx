@@ -1,12 +1,11 @@
 
 import { Col, message, Row } from "antd";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Bus from "../components/Bus";
-
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
-import api from "../helpers/axiosInstance";
+import axiosInstance from "../helpers/axiosInstance";
+
 
 function Home() {
   const { user } = useSelector((state) => state.users);
@@ -27,7 +26,7 @@ function Home() {
     });
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
         "/api/buses/get-all-buses",
         tempFilters,
         {

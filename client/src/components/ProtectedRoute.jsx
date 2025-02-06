@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { SetUser } from "../redux/usersSlice";
 import DefaultLayout from "./DefaultLayout";
-import api from "../helpers/axiosInstance";
+import axiosInstance from "../helpers/axiosInstance";
+
 
 function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function ProtectedRoute({ children }) {
     try {
       dispatch(ShowLoading());
    
-      const response = await api.post(
+      const response = await axiosInstance.post(
         "/api/users/get-user-by-id",
         {},
         {
