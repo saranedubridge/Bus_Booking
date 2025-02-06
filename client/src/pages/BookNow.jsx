@@ -38,7 +38,7 @@ function BookNow() {
     try {
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-      " /api/bookings/book-seat",
+      "/api/bookings/book-seat",
         {
           bus: bus._id,
           seats: selectedSeats,
