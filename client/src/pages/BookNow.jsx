@@ -16,7 +16,7 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
+      const response = await api.post(
         "/api/buses/get-bus-by-id",
         {
           _id: params.id,
@@ -37,7 +37,7 @@ function BookNow() {
   const bookNow = async (transactionId) => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
       " /api/bookings/book-seat",
         {
           bus: bus._id,
