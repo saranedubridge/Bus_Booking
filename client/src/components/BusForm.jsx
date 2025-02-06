@@ -27,7 +27,7 @@ function BusForm({
         
         
         response = await axiosInstance.post(
-         " /api/buses/update-bus",
+         "/api/buses/update-bus",
           {
             ...values,
             _id: selectedBus._id,
