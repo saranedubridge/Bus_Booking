@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import "../resourses/auth.css";
+import api from "../helpers/axiosInstance";
 
 function Login() {
   const [formValues, setFormValues] = useState({
@@ -18,10 +19,7 @@ function Login() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post(
-        `${import.meta.env.BACKEND_URL}/api/users/login`,
-        values
-      );
+      const response = await api.post("/api/users/login", values);
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);
@@ -46,7 +44,7 @@ function Login() {
   return (
     <div className="h-screen d-flex justify-content-center align-items-center auth">
       <div className="w-400 card p-3">
-        <h1 className="text-lg">SheyBus - Login</h1>
+        <h1 className="text-lg">SaranBus - Login</h1>
         <hr />
         <Form layout="vertical" onFinish={onFinish} initialValues={formValues}>
           <Form.Item label="Email" name="email">

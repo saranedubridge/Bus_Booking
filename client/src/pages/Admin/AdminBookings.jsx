@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import BusForm from "../../components/BusForm";
 import PageTitle from "../../components/PageTitle";
-import { axiosInstance } from "../../helpers/axiosInstance";
+import api, { axiosInstance } from "../../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../../redux/alertsSlice";
 import { useReactToPrint } from "react-to-print";
 
@@ -17,8 +17,8 @@ function Bookings() {
   const getBookings = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`bookings/get-all-bookings",
+      const response = await api.post(
+        "/api/bookings/get-all-bookings",
         {}
       );
       dispatch(HideLoading());

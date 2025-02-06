@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { ShowLoading, HideLoading } from "../redux/alertsSlice";
 import "../resourses/auth.css";
+import api from "../helpers/axiosInstance";
 
 function Register() {
   const [formValues, setFormValues] = useState({
@@ -19,8 +20,8 @@ function Register() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post(
-        "`${import.meta.env.BACKEND_URL}/api/`users/register",
+      const response = await api.post(
+       "/api/users/register",
         values
       );
       dispatch(HideLoading());
@@ -46,7 +47,7 @@ function Register() {
   return (
     <div className="h-screen d-flex justify-content-center align-items-center auth">
       <div className="w-400 card p-3">
-        <h1 className="text-lg">SheyBus - Register</h1>
+        <h1 className="text-lg">SaranBus - Register</h1>
         <hr />
         <Form layout="vertical" onFinish={onFinish} initialValues={formValues}>
           <Form.Item label="Name" name="name">

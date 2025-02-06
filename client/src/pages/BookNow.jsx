@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import SeatSelection from "../components/SeatSelection";
-import { axiosInstance } from "../helpers/axiosInstance";
+import api, { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import StripeCheckout from "react-stripe-checkout";
 
@@ -16,8 +16,8 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`buses/get-bus-by-id",
+      const response = await api.post(
+        "/api/buses/get-bus-by-id",
         {
           _id: params.id,
         }
@@ -37,8 +37,8 @@ function BookNow() {
   const bookNow = async (transactionId) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`bookings/book-seat",
+      const response = await api.post(
+      " /api/bookings/book-seat",
         {
           bus: bus._id,
           seats: selectedSeats,
@@ -61,8 +61,8 @@ function BookNow() {
   const onToken = async (token) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`bookings/make-payment",
+      const response = await api.post(
+        "/api/bookings/make-payment",
         {
           token,
           amount: selectedSeats.length * bus.fare * 100,

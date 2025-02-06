@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { axiosInstance } from "../helpers/axiosInstance";
+import api, { axiosInstance } from "../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { message, Card, Form, Input, Button, List } from "antd";
 
@@ -18,8 +18,8 @@ function Profile() {
   const getBookings = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`bookings/get-bookings-by-user-id",
+      const response = await api.post(
+        "/api/bookings/get-bookings-by-user-id",
         {
           userId: user._id,
         }
@@ -39,8 +39,8 @@ function Profile() {
   const updateProfile = async (values) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`users/update-profile",
+      const response = await api.post(
+        "/api/users/update-profile",
         {
           ...values,
           userId: user._id,

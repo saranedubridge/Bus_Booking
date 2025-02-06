@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import BusForm from "../../components/BusForm";
 import PageTitle from "../../components/PageTitle";
-import { axiosInstance } from "../../helpers/axiosInstance";
+import api, { axiosInstance } from "../../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../../redux/alertsSlice";
 
 function AdminBuses() {
@@ -17,7 +17,7 @@ function AdminBuses() {
     try {
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`buses/get-all-buses",
+        "/api/buses/get-all-buses",
         {}
       );
       dispatch(HideLoading());
@@ -36,8 +36,8 @@ function AdminBuses() {
   const deleteBus = async (id) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`buses/delete-bus",
+      const response = await api.post(
+        "/api/buses/delete-bus",
         {
           _id: id,
         }

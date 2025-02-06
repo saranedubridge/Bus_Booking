@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { SetUser } from "../redux/usersSlice";
 import DefaultLayout from "./DefaultLayout";
+import api from "../helpers/axiosInstance";
 
 function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ function ProtectedRoute({ children }) {
   const validateToken = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post(
-        "`${import.meta.env.BACKEND_URL}/api/`users/get-user-by-id",
+   
+      const response = await api.post(
+        "/api/users/get-user-by-id",
         {},
         {
           headers: {

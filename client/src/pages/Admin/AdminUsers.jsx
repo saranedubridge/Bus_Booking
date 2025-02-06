@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import PageTitle from "../../components/PageTitle";
-import { axiosInstance } from "../../helpers/axiosInstance";
+import api, { axiosInstance } from "../../helpers/axiosInstance";
 import { HideLoading, ShowLoading } from "../../redux/alertsSlice";
 
 function AdminUsers() {
@@ -14,8 +14,8 @@ function AdminUsers() {
   const getUsers = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`users/get-all-users",
+      const response = await api.post(
+        "/api/users/get-all-users",
         {}
       );
       dispatch(HideLoading());
@@ -58,7 +58,7 @@ function AdminUsers() {
 
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-        "`${import.meta.env.BACKEND_URL}/api/`users/update-user-permissions",
+        "/api/users/update-user-permissions",
         payload
       );
       dispatch(HideLoading());
