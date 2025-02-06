@@ -16,7 +16,7 @@ function BookNow() {
   const getBus = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
         "/api/buses/get-bus-by-id",
         {
           _id: params.id,
