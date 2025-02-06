@@ -17,7 +17,7 @@ function Bookings() {
   const getBookings = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await api.post(
+      const response = await axiosInstance.post(
    " /api/bookings/get-bookings-by-user-id",
         {}
       );
