@@ -18,7 +18,7 @@ function Bookings() {
     try {
       dispatch(ShowLoading());
       const response = await axiosInstance.post(
-   " /api/bookings/get-bookings-by-user-id",
+   "/api/bookings/get-bookings-by-user-id",
         {}
       );
       dispatch(HideLoading());
