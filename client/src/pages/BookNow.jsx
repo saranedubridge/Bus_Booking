@@ -115,6 +115,15 @@ function BookNow() {
               </h1>
               <hr />
 
+              
+              {/* 💳 Stripe Test Card Info */}
+              <p className="text-gray-500 text-sm mt-2">
+                💳 For testing, use card number{" "}
+                <strong>4242 4242 4242 4242</strong> with any future expiry and
+                any 3-digit CVC.
+              </p>
+
+
               <StripeCheckout
                 billingAddress
                 token={onToken}
